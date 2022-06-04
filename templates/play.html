@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Logged in user</title>
+  </head>
+
+  <body>
+    <p>Hii {{request.user.first_name}} {{request.user.last_name}}</p>
+    <p><strong> Fill the answer : </strong></p>
+
+    <div class="container">
+      <form action="play" method="POST">
+        {% comment %} {% for i in que %} {% endcomment %}
+        <p>What is {{ que.num1 }} + {{ que.num2 }} =</p>
+        {% csrf_token %}
+        <input type="number" name="answer" placeholder="Enter your answer" />
+        {% comment %} {% endfor %} {% endcomment %}
+        <br>
+        <button type="submit">submit</button>
+      </form>
+    </div>
+
+    <div>
+      {% for message in messages %}
+      <h3>{{message}}</h3>
+      {% endfor %}
+    </div>
+    <br />
+    <br />
+    <a href="/logout"> logout </a>
+  </body>
+</html>
